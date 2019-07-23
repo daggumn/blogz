@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <header class="page-header">
+        <h1>*BLOGZ*</h1>
+    <header>
+    <style>
+        h1{
+            text-align: center;
+            color:rgb(2, 0, 128);
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class='container'>
+            <div class="nav navbar-nav">
+                <a href="/">User Home</a> |
+                <a href="/blog">Blog Home</a> | 
+                <a href="/newpost">Add New Blog</a>
+                <span style='float: right;'>
+                <a href="login">Login</a> | <a href="logout">Logout</a>
+                </div>
+        </div>
+    </nav>
+    <div class='container'>
+    <br>
+    <br>
+    <h2>{{header}}</h2>
+    <style>
+            h2{
+                text-align: left;
+                color:rgb(2, 0, 128);
+            }
+            .error{
+                color: rgb(255, 0, 0);
+            }
+            
+        </style>
+    
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    <ul>
+    {% for category, message in messages %}
+        <li class="{{category}}">{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
